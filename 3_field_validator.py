@@ -23,6 +23,12 @@ class pateint(BaseModel):
             raise ValueError('Not a valid domain')
         return value           # Now only valid gmails will work like - abc@hdfc.com & abc@icici.com other than this will give an error
 
+    @field_validator('name')
+    @classmethod
+    def transform_name(cls,value):
+        return value.upper()    # Now this will capitalize all name letters
+
+
 def insert_pateint_data(pateint:pateint):
     print(pateint.name)
     print(pateint.email)
